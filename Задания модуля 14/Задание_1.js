@@ -1,10 +1,9 @@
-//Этап 1. Подготовка данных
+//14.1. JSON vs XML
 
-//экземпляр класса DOMparser
 const parser = new DOMParser();
-//сам XML, который будем парсить
-const xmlString = 
-`<list>
+
+const xmlString = `
+<list>
   <student>
     <name lang="en">
       <first>Ivan</first>
@@ -21,38 +20,36 @@ const xmlString =
     <age>58</age>
     <prof>driver</prof>
   </student>
-</list>`;
+</list>
+`;
 
-//Этап 2. Получение данных
-
-//Парсинг XML
 const xmlDOM = parser.parseFromString(xmlString, "text/xml");
-// Получаем ноду student
+
 const studentNode = xmlDOM.querySelectorAll("student");
 
-//Создаем пустой массив
+
+
 const listArr = [];
-// Перебираем studentNode и записываем в пустой массив listArr новые данные
+const listObj = {
+  list: listArr
+};
+
 studentNode.forEach(item => {
-  const nameNode = item.querySelector("name"); 
-  const firstNode = item.querySelector("first"); 
-  const secondNode = item.querySelector("second");
-  const ageNode = item.querySelector("age");
-  const profNode = item.querySelector("prof");
-  const nameAttr = nameNode.getAttribute("lang");
-  
+    const nameNode = item.querySelector("name");
+    const firstNode = item.querySelector("first");
+    const secondNode = item.querySelector("second");
+    const firstSecondName = firstNode.textContent+' '+secondNode.textContent;
+    const ageNode = item.querySelector("age");
+    const profNode = item.querySelector("prof");
+    const langAttr = nameNode.getAttribute("lang");
   listArr.push({
-      name: firstNode.textContent+' '+secondNode.textContent,
+      name: firstSecondName,
       age: Number(ageNode.textContent),
       prof: profNode.textContent,
-      lang: nameAttr
+      lang: langAttr
   })
 });
-//Создаем объект и добавляем ключ list со значением в виде массива listArr
-const list = {
-    list: listArr
-};
-//Выводим в консоль 
-console.log(list);
+
+console.log(listObj);
 
 
