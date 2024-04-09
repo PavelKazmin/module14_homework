@@ -45,7 +45,7 @@ studentNode.forEach(item => {
   //пушим в наш пустой массив новые объекты
   listArr.push({
       name: firstSecondName,
-      age: Number(ageNode.textContent),
+      age: Number(ageNode.textContent),// Здесь еще нужно привести данные к типу Number
       prof: profNode.textContent,
       lang: langAttr
   })
