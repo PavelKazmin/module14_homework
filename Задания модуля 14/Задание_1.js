@@ -43,7 +43,7 @@ studentNode.forEach(item => {
   
   listArr.push({
       name: firstNode.textContent+' '+secondNode.textContent,
-      age: ageNode.textContent,
+      age: Number(ageNode.textContent),
       prof: profNode.textContent,
       lang: nameAttr
   })
