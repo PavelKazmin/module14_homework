@@ -1,0 +1,88 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+}
+.input {
+    width: 300px;
+    height: 6vh;
+    border-radius: 10px;
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background: #F03942;
+    box-shadow: 0 0 15px 5px rgba(150, 150, 150, .7);
+    cursor: text;
+}
+.input:focus + .btn, .input:hover + .btn{
+    color: blue;
+}
+.btn {
+    width: 100px;
+    height: 100px;
+    background: #F03942;
+    border-radius: 50%;
+    border: 1px solid rgba(150, 150, 150, .7);
+    box-shadow: 0 0 15px 5px rgba(150, 150, 150, .7);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0 0 4px rgba(0, 0, 0, .5);
+    transition-duration: .2s;
+    position: relative;
+    cursor: pointer;
+}
+.btn::after {
+    content: " ";
+    display: block;
+    width: 90px;
+    height: 90px;
+    border: 5px solid;
+    border-radius: 50%;
+    border-color: transparent transparent transparent blue ;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: rotation-btn 2s linear infinite;
+}
+.btn::before {
+    content: " ";
+    display: block;
+    width: 90px;
+    height: 90px;
+    border: 5px solid;
+    border-radius: 50%;
+    border-color: transparent blue blue transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: rotation-btn 1.3s linear infinite;
+}
+.btn:hover {
+    transform: scale(.98);
+    color: blue;
+}
+.btn:active {
+    transform: scale(.95);
+}
+
+.photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+@keyframes rotation-btn {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+};
